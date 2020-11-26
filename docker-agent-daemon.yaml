@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: docker-agent
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: docker-agent
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: docker-agent
+    spec:
+      containers:
+        - env:
+            - name: nodeIp
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.hostIP
+            - name: clusterName
+              value: 'sg-constpmp'
+            - name: serverAddr
+              value: "10.2.76.169:30000"
+          image: xxx/xx/docker-agent:v3
+          imagePullPolicy: Always
+          name: docker-agent
+          resources:
+            limits:
+              cpu: "30m"
+              memory: 50Mi
+            requests:
+              cpu: 10m
+              memory: 10Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-sock
+          - mountPath: /etc/localtime
+            name: host-time
+#          - mountPath: /usr/lib/x86_64-linux-gnu/libltdl.so.7
+#            name: libltdl
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+        - key: CriticalAddonsOnly
+          operator: Exists
+        - effect: NoExecute
+          key: node.kubernetes.io/not-ready
+          operator: Exists
+          tolerationSeconds: 60
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 60
+      volumes:
+        - hostPath:
+            path: /var/run/docker.sock
+            type: ""
+          name: docker-sock
+#        - hostPath:
+#            path: /usr/lib64/libltdl.so.7
+#            type: ""
+#          name: libltdl
+        - hostPath:
+            path: /etc/localtime
+            type: ""
+          name: host-time
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate

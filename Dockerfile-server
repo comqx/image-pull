@@ -1,0 +1,15 @@
+FROM golang:alpine as builder
+ENV GO111MODULE=on \
+    CGO_ENABLED=0 \
+    GOOS=linux \
+    GOARCH=amd64 \
+	GOPROXY="https://goproxy.cn,direct"
+WORKDIR /usr/app/
+COPY . .
+RUN go build -o app ./server/docker-server/
+
+FROM  alpine:latest
+ENV  TIME_ZONE  Asia/Shanghai
+WORKDIR  /root
+COPY  --from=builder /usr/app/server  .
+CMD  ["./usr/app/server"]
