@@ -1,3 +1,4 @@
+[toc]
 # 简介
 > 本项目主要实现了k8s镜像预加载功能，提供api进行触发，或者可以将功能集成到平台上面实现镜像的预加载。缩短发版时间
 
@@ -36,18 +37,18 @@ curl http://127.0.0.1:8080/api/getRegisteredList&k8s_name=local
  docker build . -f Dockerfile-agent  -t mirror-registry.xxx.com/ptc/docker-agent:v3  && docker push mirror-registry.xxx.com/ptc/docker-agent:v3 
 ```
 ## 相关环境变量
-| 变量key | 变量备注 |      |
-| ------- | -------- | ---- |
-| clusterName | 集群名称       |      |
-| nodeIp | 机器ip      |      |
-| serverAddr | server的ip+端口       |      |
+| 变量key | 变量备注 |
+| ------- | -------- |
+| clusterName | 集群名称       |
+| nodeIp | 机器ip      |
+| serverAddr | server的ip+端口       |
 
 # server使用
 ```
  docker build . -f Dockerfile-server -t mirror-registry.xxx.com/ptc/docker-server:v1 && docker push  mirror-registry.xxx.com/ptc/docker-server:v1   
 ```
 ## 相关环境变量
-| 变量key | 变量备注 |      |
-| ------- | -------- | ---- |
-| serverAddr | server的ip+端口       |      |
-| httpAddr | web的ip+端口 | |
+| 变量key | 变量备注 |
+| ------- | -------- |
+| serverAddr | server的ip+端口       |
+| httpAddr | web的ip+端口 |
