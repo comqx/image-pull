@@ -10,7 +10,7 @@
 - 通过websocket方式获取每个机器拉取镜像的详细信息
 
 # api简介
-```
+```shell
 # 发送要拉取的镜像信息
 http://127.0.0.1:8080/api/sendImage POST
 
@@ -30,11 +30,24 @@ curl方式：
 curl http://127.0.0.1:8080/api/getRegisteredList&k8s_name=local
 ```
 
-# agent 打包
+# agent使用
 ```
+# 构建镜像
  docker build . -f Dockerfile-agent  -t mirror-registry.xxx.com/ptc/docker-agent:v3  && docker push mirror-registry.xxx.com/ptc/docker-agent:v3 
 ```
-# server 打包
+## 相关环境变量
+| 变量key | 变量备注 |      |
+| ------- | -------- | ---- |
+| clusterName | 集群名称       |      |
+| nodeIp | 机器ip      |      |
+| serverAddr | server的ip+端口       |      |
+
+# server使用
 ```
  docker build . -f Dockerfile-server -t mirror-registry.xxx.com/ptc/docker-server:v1 && docker push  mirror-registry.xxx.com/ptc/docker-server:v1   
 ```
+## 相关环境变量
+| 变量key | 变量备注 |      |
+| ------- | -------- | ---- |
+| serverAddr | server的ip+端口       |      |
+| httpAddr | web的ip+端口 | |
