@@ -19,7 +19,7 @@ func startGinHTTP(httpAddr string ) {
 	})
 	ginpprof.Wrap(server)
 	router.ConfigApiRouter(&server.RouterGroup)
-	fmt.Printf("查看server运行状态： http://%s/debug/pprof\n",httpAddr)
+	fmt.Printf("查看server运行状态： http://%s:8080/debug/pprof\n",httpAddr)
 	err := server.Run(httpAddr)
 	if err != nil {
 		fmt.Println(err)
@@ -30,17 +30,17 @@ func main() {
 	//global.GVA_LOG = log.Zap() // 初始化zap日志库
 	serverAddr := os.Getenv("serverAddr")
 	if serverAddr ==""{
-		serverAddr = "0.0.0.0:30000"
+		serverAddr = "0.0.0.0"
 	}
 	httpAddr :=os.Getenv("httpAddr")
 	if httpAddr ==""{
-		httpAddr = "0.0.0.0:8080"
+		httpAddr = "0.0.0.0"
 	}
 	listen, err := tcpServer.SerInit(serverAddr)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Printf(" Listening and serving tcp on %s\n",serverAddr)
+	fmt.Printf(" Listening and serving tcp on %s:30000\n",serverAddr)
 	defer listen.Close()
 	startGinHTTP(httpAddr)
 }

@@ -56,7 +56,7 @@ func main() {
 	//nodeInfo := "local/127.0.0.1"
 	//serverAddr := "127.0.0.1:30000"
 	for {
-		client.TcpClient, err = net.Dial("tcp", serverAddr)
+		client.TcpClient, err = net.Dial("tcp",fmt.Sprintf("%s:30000",serverAddr))
 		if err != nil {
 			fmt.Println("连接报错，等待server启动：", err)
 			time.Sleep(2 * time.Second)

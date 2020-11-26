@@ -40,7 +40,7 @@ curl http://127.0.0.1:8080/api/getRegisteredList&k8s_name=local
 | ------- | -------- |
 | clusterName | 集群名称       |
 | nodeIp | 机器ip      |
-| serverAddr | server的ip+端口       |
+| serverAddr | server的ip       |
 
 # server使用
 ```
@@ -49,5 +49,5 @@ curl http://127.0.0.1:8080/api/getRegisteredList&k8s_name=local
 ## 相关环境变量
 | 变量key | 变量备注 |
 | ------- | -------- |
-| serverAddr | server的ip+端口       |
-| httpAddr | web的ip+端口 |
+| serverAddr | server的ip       |
+| httpAddr | web的ip |
