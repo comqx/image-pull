@@ -50,11 +50,19 @@ func dockerPull(ImageListEnv, nodeInfo string) (err error) {
 func main() {
 	var (
 		err error
+		serverAddr,clusterName,nodeIp string
 	)
+	clusterName= os.Getenv("clusterName")
+	if clusterName= os.Getenv("clusterName");clusterName ==""{
+		clusterName="local"
+	}
+	if nodeIp=os.Getenv("nodeIp");nodeIp ==""{
+		nodeIp="127.0.0.1"
+	}
+	if serverAddr= os.Getenv("serverAddr");serverAddr== ""{
+		serverAddr="127.0.0.1"
+	}
 	nodeInfo := fmt.Sprintf("%s/%s", os.Getenv("clusterName"), os.Getenv("nodeIp"))
-	serverAddr := os.Getenv("serverAddr")
-	//nodeInfo := "local/127.0.0.1"
-	//serverAddr := "127.0.0.1:30000"
 	for {
 		client.TcpClient, err = net.Dial("tcp",fmt.Sprintf("%s:30000",serverAddr))
 		if err != nil {
