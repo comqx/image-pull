@@ -89,7 +89,7 @@ func SerInit(listenAddr string) (listen net.Listener, err error) {
 	RegisteredMap = make(map[string]map[string]net.Conn, 10)
 	//RegisteredSyncMap = sync.Map{}
 
-	listen, err = net.Listen("tcp", listenAddr)
+	listen, err = net.Listen("tcp", fmt.Sprintf("%s:30000",listenAddr))
 	if err != nil {
 		fmt.Println("listen failed, err:", err)
 		return

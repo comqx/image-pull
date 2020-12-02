@@ -17,17 +17,19 @@ spec:
       containers:
         - env:
             - name: httpAddr
-              value: "10.2.76.169"
+              value: "0.0.0.0"
             - name: serverAddr
-              value: "10.2.76.169"
+              value: "0.0.0.0"
           image: xxx/xx/docker-server:v3
           imagePullPolicy: Always
           name: docker-server
           ports:
             - containerPort: 30000
               name: server
+              protocol: TCP
             - containerPort: 8080
               name: http
+              protocol: TCP
           resources:
             limits:
               cpu: "30m"
@@ -55,15 +57,18 @@ apiVersion: v1
 kind: Service
 metadata:
   name: docker-server-svc
+  namespace: default
 spec:
   ports:
-    - port: 30000
+    - name: tcp-server
+      port: 30000
       protocol: TCP
       targetPort: 30000
-    - port: 8080
+    - name: http
+      port: 8080
       protocol: TCP
       targetPort: 8080
   selector:
     app: docker-server
   sessionAffinity: None
-  type: ClusterIP
+  type: NodePort

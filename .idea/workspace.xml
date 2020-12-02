@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5e07ef71-2e49-4c2f-aa92-6524496ded0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-agent-daemon.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-agent-daemon.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/docker-agent/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/docker-agent/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile-server" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile-server" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-server-deploy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-server-deploy.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/docker-server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/docker-server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tcpServer/tcpServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/tcpServer/tcpServer.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
