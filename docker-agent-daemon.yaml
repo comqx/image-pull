@@ -23,7 +23,7 @@ spec:
             - name: clusterName
               value: 'sg-constpmp'
             - name: serverAddr
-              value: "10.2.76.169"
+              value: "10.2.76.169:30000"
           image: xxx/xx/docker-agent:v3
           imagePullPolicy: Always
           name: docker-agent
