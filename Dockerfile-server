@@ -6,7 +6,7 @@ ENV GO111MODULE=on \
 	GOPROXY="https://goproxy.cn,direct"
 WORKDIR /usr/app/
 COPY . .
-RUN go build -o app ./server/docker-server/
+RUN go build -o server ./server/docker-server/
 
 FROM  alpine:latest
 ENV  TIME_ZONE  Asia/Shanghai

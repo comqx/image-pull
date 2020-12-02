@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e07ef71-2e49-4c2f-aa92-6524496ded0a" name="Default Changelist" comment="" />
+    <list default="true" id="5e07ef71-2e49-4c2f-aa92-6524496ded0a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Dockerfile-agent" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile-agent" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile-server" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile-server" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
@@ -16,6 +22,7 @@
     <option name="namespace" value="default" />
   </component>
   <component name="ProjectId" id="1koKhtXcVXbtOWRWOgfHkQkoWCo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
