@@ -45,6 +45,11 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
+      volumes:
+        - hostPath:
+            path: /etc/localtime
+            type: ""
+          name: host-time
 ---
 apiVersion: v1
 kind: Service
