@@ -12,4 +12,4 @@ FROM  alpine:latest
 ENV  TIME_ZONE  Asia/Shanghai
 WORKDIR  /root
 COPY  --from=builder /usr/app/agent  .
-CMD  ["./usr/app/agent"]
+CMD  ["/usr/app/agent"]
