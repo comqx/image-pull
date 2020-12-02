@@ -17,17 +17,19 @@ spec:
       containers:
         - env:
             - name: httpAddr
-              value: "10.2.76.169"
+              value: "0.0.0.0"
             - name: serverAddr
-              value: "10.2.76.169"
+              value: "0.0.0.0"
           image: xxx/xx/docker-server:v3
           imagePullPolicy: Always
           name: docker-server
           ports:
             - containerPort: 30000
               name: server
+              protocol: TCP
             - containerPort: 8080
               name: http
+              protocol: TCP
           resources:
             limits:
               cpu: "30m"
@@ -45,3 +47,28 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
+      volumes:
+        - hostPath:
+            path: /etc/localtime
+            type: ""
+          name: host-time
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-server-svc
+  namespace: default
+spec:
+  ports:
+    - name: tcp-server
+      port: 30000
+      protocol: TCP
+      targetPort: 30000
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: docker-server
+  sessionAffinity: None
+  type: NodePort

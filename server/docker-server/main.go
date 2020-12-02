@@ -20,7 +20,7 @@ func startGinHTTP(httpAddr string ) {
 	ginpprof.Wrap(server)
 	router.ConfigApiRouter(&server.RouterGroup)
 	fmt.Printf("查看server运行状态： http://%s:8080/debug/pprof\n",httpAddr)
-	err := server.Run(httpAddr)
+	err := server.Run(fmt.Sprintf("%s:8080",httpAddr))
 	if err != nil {
 		fmt.Println(err)
 	}

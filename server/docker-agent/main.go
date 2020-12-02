@@ -60,11 +60,11 @@ func main() {
 		nodeIp="127.0.0.1"
 	}
 	if serverAddr= os.Getenv("serverAddr");serverAddr== ""{
-		serverAddr="127.0.0.1"
+		serverAddr="127.0.0.1:30000"
 	}
 	nodeInfo := fmt.Sprintf("%s/%s", os.Getenv("clusterName"), os.Getenv("nodeIp"))
 	for {
-		client.TcpClient, err = net.Dial("tcp",fmt.Sprintf("%s:30000",serverAddr))
+		client.TcpClient, err = net.Dial("tcp",serverAddr)
 		if err != nil {
 			fmt.Println("连接报错，等待server启动：", err)
 			time.Sleep(2 * time.Second)
