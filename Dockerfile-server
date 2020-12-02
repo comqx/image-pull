@@ -10,6 +10,6 @@ RUN go build -o server ./server/docker-server/
 
 FROM  alpine:latest
 ENV  TIME_ZONE  Asia/Shanghai
-WORKDIR  /root
+WORKDIR  /usr/app/
 COPY  --from=builder /usr/app/server  .
 CMD  ["/usr/app/server"]
